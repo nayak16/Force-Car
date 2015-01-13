@@ -8,10 +8,19 @@ from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
 class SampleListener(Leap.Listener):
 
+	def on_init(self, controller):
+		print "Initialized"
+		try: 
+			self.arduino = serial.Serial('/dev/ttyACM0/', 9600)
+		except Exception:
+			try: 
+				self.arduino = serial.Serial('/dev/ttyACM1/', 9600)
+			except Exception:
+				pass
+
 	def on_connect(self, controller):
 		print "Connected"
 		controller.enable_gesture(Leap.Gesture.TYPE_SCREEN_TAP)
-		self.arduino = serial.Serial('/dev/ttyACM0/', 9600)
 
 	def handAnalysis(self, frame):
 		hand = frame.hands[0]
@@ -20,20 +29,29 @@ class SampleListener(Leap.Listener):
 		roll = hand.palm_normal.roll
 		output = "Pitch: %f Yaw: %f Roll: %f" % (pitch, yaw, roll)
 
+		packet = 0
 		# Forward
 		if pitch < -0.2:
 			print "Forward",
+			packet += 1
 		elif pitch > 0.4:
 			print "Backward",
+			packet += 2
 		else:
 			print "Stationary",
 
 		if roll < -0.4:
+			packet = packet * 2
 			print "and Right"
+			packet += 4
 		elif roll > 0.3:
+			packet = packet * 2
 			print "and Left"
+			packet += 3
 		else:
 			print "and Straight"
+
+		
 
 	def on_frame(self, controller):
 		frame = controller.frame()
