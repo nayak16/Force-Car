@@ -22,13 +22,13 @@
  
  void loop() {
    
-   char command = '';
+   char command = ' ';
    if (Serial.available()) {
      char command = Serial.read();
      Serial.println(command);
    }
    delay(100);
-   switch (commmand){
+   switch (command){
      case 0:    
        digitalWrite(13, HIGH);
        digitalWrite(12, HIGH);
@@ -124,6 +124,7 @@
 //   digitalWrite(11, HIGH);
 //   digitalWrite(10, HIGH);
 //   delay(1000); 
+// }
    
- }   
+    
  
