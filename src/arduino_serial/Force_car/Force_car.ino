@@ -29,58 +29,101 @@
    }
    delay(100);
    switch (commmand){
-     
+     case 0:    
+       digitalWrite(13, HIGH);
+       digitalWrite(12, HIGH);
+       digitalWrite(11, HIGH);
+       digitalWrite(10, HIGH);
+       delay(1000);
+       break;
+     case 1:    
+       digitalWrite(13, LOW);
+       break;
+     case 2:
+       digitalWrite(12, LOW);
+       break;
+     case 3:
+       digitalWrite(11, LOW);
+       break;    
+     case 4:
+       digitalWrite(10, LOW);
+       break;
+     case 5:
+       digitalWrite(13, LOW);
+       digitalWrite(11, LOW);
+       break;
+     case 6:
+       digitalWrite(13, LOW);
+       digitalWrite(10, LOW);
+       break;
+     case 7:
+       digitalWrite(12, LOW);
+       digitalWrite(10, LOW);
+       break;
+     case 8: 
+       digitalWrite(12, LOW);
+       digitalWrite(11, LOW);
+       break;
+     default: 
+       digitalWrite(13, HIGH);
+       digitalWrite(12, HIGH);
+       digitalWrite(11, HIGH);
+       digitalWrite(10, HIGH);
    }
+     delay(250);
+
+ }
    
    
-   //forward
-   digitalWrite(13, LOW);
-   delay(250);
-   //forward left
-   digitalWrite(11, LOW);
-   delay(250);
-   //stop
-   digitalWrite(13, HIGH);
-   digitalWrite(12, HIGH);
-   digitalWrite(11, HIGH);
-   digitalWrite(10, HIGH);
-   delay(1000);
-   //backward
-   digitalWrite(12, LOW);
-   delay(250);
-   //backward right
-   digitalWrite(10, LOW);
-   delay(250);
-   //stop
-   digitalWrite(12, HIGH);
-   digitalWrite(13, HIGH);
-   digitalWrite(11, HIGH);
-   digitalWrite(10, HIGH);
-   delay(1000);
+//   //forward
+//   digitalWrite(13, LOW);
+//   delay(250);
+//   //forward left
+//   digitalWrite(11, LOW);
+//   delay(250);
+//   //stop
+//   digitalWrite(13, HIGH);
+//   digitalWrite(12, HIGH);
+//   digitalWrite(11, HIGH);
+//   digitalWrite(10, HIGH);
+//   delay(1000);
+//   //backward
+//   digitalWrite(12, LOW);
+//   delay(250);
+//   //backward right
+//   digitalWrite(10, LOW);
+//   delay(250);
+//   //stop
+//   digitalWrite(12, HIGH);
+//   digitalWrite(13, HIGH);
+//   digitalWrite(11, HIGH);
+//   digitalWrite(10, HIGH);
+//   delay(1000);
+//   
+//   //forward
+//   digitalWrite(13, LOW);
+//   delay(250);
+//   //forward right
+//   digitalWrite(10, LOW);
+//   delay(250);
+//   //stop
+//   digitalWrite(13, HIGH);
+//   digitalWrite(12, HIGH);
+//   digitalWrite(11, HIGH);
+//   digitalWrite(10, HIGH);
+//   delay(1000);
+//   //backward
+//   digitalWrite(12, LOW);
+//   delay(250);
+//   //backward left
+//   digitalWrite(11, LOW);
+//   delay(250);
+//   //stop
+//   digitalWrite(12, HIGH);
+//   digitalWrite(13, HIGH);
+//   digitalWrite(11, HIGH);
+//   digitalWrite(10, HIGH);
+//   delay(1000); 
    
-   //forward
-   digitalWrite(13, LOW);
-   delay(250);
-   //forward right
-   digitalWrite(10, LOW);
-   delay(250);
-   //stop
-   digitalWrite(13, HIGH);
-   digitalWrite(12, HIGH);
-   digitalWrite(11, HIGH);
-   digitalWrite(10, HIGH);
-   delay(1000);
-   //backward
-   digitalWrite(12, LOW);
-   delay(250);
-   //backward left
-   digitalWrite(11, LOW);
-   delay(250);
-   //stop
-   digitalWrite(12, HIGH);
-   digitalWrite(13, HIGH);
-   digitalWrite(11, HIGH);
-   digitalWrite(10, HIGH);
-   delay(1000);
  }   
  
