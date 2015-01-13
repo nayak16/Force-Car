@@ -6,17 +6,12 @@ sys.path.insert(0, os.path.abspath(os.path.join(src_dir, arch_dir)))
 import Leap
 from Leap import CircleGesture, KeyTapGesture, ScreenTapGesture, SwipeGesture
 
+arduino = serial.Serial('/dev/ttyACM1', 9600)
+
 class SampleListener(Leap.Listener):
 
 	def on_init(self, controller):
 		print "Initialized"
-		try: 
-			self.arduino = serial.Serial('/dev/ttyACM0/', 9600)
-		except Exception:
-			try: 
-				self.arduino = serial.Serial('/dev/ttyACM1/', 9600)
-			except Exception:
-				pass
 
 	def on_connect(self, controller):
 		print "Connected"
@@ -51,6 +46,9 @@ class SampleListener(Leap.Listener):
 		else:
 			print "and Straight"
 
+		print "writing "+str(packet)+"to arduino"
+
+		arduino.write(chr(packet))
 		
 
 	def on_frame(self, controller):

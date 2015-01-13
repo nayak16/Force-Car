@@ -28,15 +28,19 @@
      Serial.println(command);
    }
    delay(100);
+   digitalWrite(13, HIGH);
+   digitalWrite(12, HIGH);
+   digitalWrite(11, HIGH);
+   digitalWrite(10, HIGH);
    switch (command){
-     case 0:    
+     case '0':    
        digitalWrite(13, HIGH);
        digitalWrite(12, HIGH);
        digitalWrite(11, HIGH);
        digitalWrite(10, HIGH);
        delay(1000);
        break;
-     case 1:    
+     case '1':    
        digitalWrite(13, LOW);
        break;
      case 2:
