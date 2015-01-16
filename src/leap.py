@@ -16,6 +16,8 @@ class SampleListener(Leap.Listener):
 	def on_connect(self, controller):
 		print "Connected"
 		controller.enable_gesture(Leap.Gesture.TYPE_SCREEN_TAP)
+		controller.enable_gesture(Leap.Gesture.TYPE_CIRCLE)
+
 
 	def handAnalysis(self, frame):
 		hand = frame.hands[0]
@@ -25,37 +27,41 @@ class SampleListener(Leap.Listener):
 		output = "Pitch: %f Yaw: %f Roll: %f" % (pitch, yaw, roll)
 
 		packet = 0
+
+
 		# Forward
-		if pitch < -0.2:
+		if pitch < -0.7:
 			print "Forward",
 			packet += 1
-		elif pitch > 0.4:
+		elif pitch > 0.6:
 			print "Backward",
 			packet += 2
 		else:
 			print "Stationary",
 
-		if roll < -0.4:
+		if roll < -0.6:
 			packet = packet * 2
 			print "and Right"
 			packet += 4
-		elif roll > 0.3:
+		elif roll > 0.6:
 			packet = packet * 2
 			print "and Left"
 			packet += 3
 		else:
 			print "and Straight"
 
-		print "writing "+str(packet)+"to arduino"
-
-		arduino.write(chr(packet))
+		print output
 		
+
+		arduino.write(str(packet))
+
 
 	def on_frame(self, controller):
 		frame = controller.frame()
         #print "Frame id: %d, timestamp: %d, hands: %d, fingers: %d, tools: %d, gestures: %d" % (
          # frame.id, frame.timestamp, len(frame.hands), len(frame.fingers), len(frame.tools), len(frame.gestures()))
-        	self.handAnalysis(frame)
+		if len(frame.hands) > 0:
+			self.handAnalysis(frame)
 
 
 def main():

@@ -26,8 +26,9 @@
    if (Serial.available()) {
      char command = Serial.read();
      Serial.println(command);
-   }
-   delay(100);
+   
+  
+   // kill everything
    digitalWrite(13, HIGH);
    digitalWrite(12, HIGH);
    digitalWrite(11, HIGH);
@@ -38,33 +39,33 @@
        digitalWrite(12, HIGH);
        digitalWrite(11, HIGH);
        digitalWrite(10, HIGH);
-       delay(1000);
+
        break;
      case '1':    
        digitalWrite(13, LOW);
        break;
-     case 2:
+     case '2':
        digitalWrite(12, LOW);
        break;
-     case 3:
+     case '3':
        digitalWrite(11, LOW);
        break;    
-     case 4:
+     case '4':
        digitalWrite(10, LOW);
        break;
-     case 5:
+     case '5':
        digitalWrite(13, LOW);
        digitalWrite(11, LOW);
        break;
-     case 6:
+     case '6':
        digitalWrite(13, LOW);
        digitalWrite(10, LOW);
        break;
-     case 7:
+     case '7':
        digitalWrite(12, LOW);
        digitalWrite(10, LOW);
        break;
-     case 8: 
+     case '8': 
        digitalWrite(12, LOW);
        digitalWrite(11, LOW);
        break;
@@ -74,7 +75,8 @@
        digitalWrite(11, HIGH);
        digitalWrite(10, HIGH);
    }
-     delay(250);
+     //delay(250);
+   }
 
  }
    
